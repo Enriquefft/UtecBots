@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "utecbots"
+version = "0.1.0"
+description = "Proyect made for the cloud computing course"
+authors = ["Enrique <enrique.flores@utec.edu.pe>"]
+license = "AGPL-3.0-only"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+aws-cdk-lib = "2.84.0"
+constructs = ">=10.0.0,<11.0.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "6.2.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
