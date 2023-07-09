@@ -6,6 +6,9 @@ authors = ["Enrique <enrique.flores@utec.edu.pe>"]
 license = "AGPL-3.0-only"
 readme = "README.md"
 
+[tool.poe.tasks]
+deploy = {shell = "cd s3_site/iac && cdk deploy --all --method=direct && cd ../.."}
+
 [tool.poetry.dependencies]
 python = "^3.10"
 aws-cdk-lib = "2.84.0"

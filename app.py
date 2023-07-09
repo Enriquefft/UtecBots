@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 import os
-
 import aws_cdk as cdk
 
 from utec_bots.utec_bots_stack import UtecBotsStack
 
 
 app = cdk.App()
+
 UtecBotsStack(
     app,
     "UtecBotsStack",
