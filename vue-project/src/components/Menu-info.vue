@@ -1,7 +1,7 @@
 
 <template>
     <div class="menu-info">
-        <hi>Welcome Menu Info</hi>
+        <h1>Menu info</h1>        
     </div>
     
     

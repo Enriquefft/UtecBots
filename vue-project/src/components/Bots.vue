@@ -1,28 +1,40 @@
 <template>
     <div class="bots-principal">
-        <!--
-        <h1>Own Bots - {{ getContOwnBots( owner ) }}</h1>
-        <div class="bots"> 
-        
-  
-            <div v-for="bot in dataBots" :key="bot.bot_id" class="bot-list">
-                
-                <div v-if="bot.owner ==owner" class="bot-list-one">
-                    <div class="bot-list-one-perfil">
-                        <img :src=bot.icon>
-                        <b><p>{{ bot.bot_username }}</p></b>
-                    </div>
+        <div v-if="activate_recrrent_bot">
+            <h1>Recurrent Bots - {{ getContOwnBots( owner ) }}</h1>
+          <div class="bots"> 
+            
+          
     
-                    <div class="bot-list-one-description">
-                        <p>{{bot.description}}</p>
-                        <p><u>Created by {{bot.owner}}</u></p>
-                    </div>
-                    
-                </div>          
-    
-            </div>  
+              <div class="bot-list">
+                  
+                  <div class="bot-list-one">
+                      <div class="bot-list-one-perfil">
+                          <img :src=bot_icon_activate>
+                          <b><p>{{ bot_username_activate }}</p></b>
+                      </div>
+      
+                      <div class="bot-list-one-description">
+                          <p>{{bot_description_activate}}</p>   
+                          <div class="login-box-button">
+                            <button @click="desactivateBot()"><label><b>Desactivate</b></label></button>                      
+                          </div>                     
+                      </div>
+                      
+                      
+                      
+
+                      
+                      
+                  </div>          
+      
+              </div>  
+          </div>
+          
         </div>
-        <---->
+        
+        
+        
 
 
         <h1>Community Bots - {{ getContCommunityBots() }}</h1>
@@ -36,13 +48,15 @@
                     <div class="bot-list-one-perfil">
                         <img :src=bot.icon>
                         <b><p>{{ bot.bot_username }}</p></b>
-                    </div>
-    
-                    <div class="bot-list-one-description">
-                        <p>{{bot.description}}</p>
-                        <p><u>Created by {{bot.owner}}</u></p>
-                    </div>
-                    
+
+                        <div class="bot-list-one-description">
+                          <p>{{bot.description}}</p>                          
+                        </div>
+
+                        <div class="login-box-button">
+                          <button @click="activateBot(bot.bot_username,bot.icon,bot.description)"><label><b>Activate</b></label></button>                      
+                        </div>
+                    </div>                       
                 </div>          
     
             </div>  
@@ -64,6 +78,10 @@
         this.dataBots = data.bots; 
       }),
         owner : this.getUsername() ,
+        bot_username_activate : "",
+        bot_icon_activate : "",
+        bot_description_activate : "",
+        activate_recrrent_bot : false
         
         }        
     },
@@ -109,6 +127,21 @@
             return cont;
         },
 
+        activateBot(bot_username,bot_icon,bot_description){
+          this.bot_username_activate = bot_username;
+          this.bot_icon_activate = bot_icon;
+          this.bot_description_activate = bot_description;
+          this.activate_recrrent_bot = true;
+        },
+
+        desactivateBot(){
+          this.bot_username_activate = "";
+          this.bot_icon_activate = "";
+          this.bot_description_activate = "";
+          this.activate_recrrent_bot = false;
+        }
+
+
         
 
         
@@ -118,6 +151,11 @@
   </script>
   
   <style>
+
+  .activate-button{
+    display: flex;
+    align-content: center;
+  }
   
   .bots-principal{
     margin: 20px;
@@ -170,6 +208,7 @@
   .bot-list-one-description{
     text-align: center;
   }
+  
   
   
   
